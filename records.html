@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Body Styling */
+/* Body Styling */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    background-color: #003366; /* Solid dark blue background */
+    font-family: Arial, sans-serif; /* Default font */
+    color: #333; /* Text color */
+    display: flex; /* Flexbox for layout */
+    justify-content: center; /* Horizontally center */
+    align-items: flex-start; /* Start content from top */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+/* Container Styling */
+.container {
+    width: 90%;
+    max-width: 1200px;
+     background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    margin-top: 20px; /* Space from the top */
+}
+
+/* Card Section Styling */
+.card {
+    margin-bottom: 20px; /* Space between cards */
+    padding: 20px;
+    border: 1px solid #3c3535;
+    border-radius: 8px;
+    background-color: #fff; /* Card background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #005fa3;
+}
+
+.btn-secondary {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #d32f2f;
+}
+
+/* Animated List Styling */
+.animated-list li {
+    list-style: none;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+}
+
+.animated-list li:hover {
+    background-color: #f1f1f1;
+}
+
+/* Animated List Styling */
+.animated-list li {
+    list-style: none;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+}
+
+.animated-list li:hover {
+    background-color: #f1f1f1;
+}
+
+    </style>
+    <title>Health Records - Medical Advisor</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, <span id="username-display"></span></h1>
+            <!-- Profile Picture Section -->
+        <div id="profile-section" class="card">
+            <h2>Profile Picture</h2>
+            <img id="profile-pic" src="default-avatar.png" alt="Profile Picture" class="profile-img">
+            <form id="profile-form">
+                <label for="profile-upload">Upload Profile Picture:</label>
+                <input type="file" id="profile-upload" accept="image/*">
+                <button type="button" id="upload-btn" class="btn-primary">Upload</button>
+            </form>
+        </div>
+
+        
+        <!-- User Details Section -->
+        <div id="user-details" class="card">
+            <h2>User Details</h2>
+            <p><strong>Email:</strong> <span id="email-display"></span></p>
+        </div>
+
+        <!-- Medication Reminder Section -->
+        <div id="medication-section" class="card">
+            <h2>Medication Reminders</h2>
+            <form id="reminder-form">
+                <label for="medication-name">Medication Name:</label>
+                <input type="text" id="medication-name" required placeholder="E.g., Aspirin 100mg">
+
+                <label for="reminder-time">Reminder Time:</label>
+                <input type="time" id="reminder-time" required>
+
+                <button type="submit" class="btn-primary">Add Reminder</button>
+            </form>
+            <h3>Upcoming Medication Reminders:</h3>
+            <ul id="reminder-list" class="animated-list"></ul>
+        </div>
+
+        <!-- Add Health Records Section -->
+        <div id="record-section" class="card">
+            <h2>Add Health Record</h2>
+            <form id="record-form">
+                <label for="record-description">Description:</label>
+                <input type="text" id="record-description" required placeholder="E.g., Blood Test">
+
+                <label for="record-date">Date:</label>
+                <input type="date" id="record-date" required>
+
+                <label for="record-file">Attach File:</label>
+                <input type="file" id="record-file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required>
+
+                <button type="submit" class="btn-primary">Add Record</button>
+            </form>
+            <h3>Your Health Records:</h3>
+            <ul id="record-list" class="animated-list"></ul>
+        </div>
+
+        <!-- Upcoming Doctor Appointments -->
+        <div id="appointments-section" class="card">
+            <h2>Upcoming Doctor Appointments</h2>
+            <form id="appointment-form">
+                <label for="appointment-doctor">Doctor's Name:</label>
+                <input type="text" id="appointment-doctor" required placeholder="E.g., Dr. Smith">
+
+                <label for="appointment-date">Appointment Date:</label>
+                <input type="date" id="appointment-date" required>
+
+                <label for="appointment-time">Time:</label>
+                <input type="time" id="appointment-time" required>
+
+                <button type="submit" class="btn-primary">Add Appointment</button>
+            </form>
+            <h3>Upcoming Appointments:</h3>
+            <ul id="appointment-list" class="animated-list"></ul>
+        </div>
+
+        <!-- Logout Button -->
+        <button id="logout-btn" class="btn-secondary">Logout</button>
+    </div>
+
+    <script src="health_records.js"></script>
+</body>
+</html>
